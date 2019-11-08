@@ -8,8 +8,10 @@
     "apollo-server": "^2.9.7",
     "dotenv": "^8.2.0",
     "lerna": "^3.18.4",
+    "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.17.5"
+    "type-graphql": "^0.17.5",
+    "typeorm": "^0.2.20"
   },
   "devDependencies": {
     "graphql": "^14.5.8",
