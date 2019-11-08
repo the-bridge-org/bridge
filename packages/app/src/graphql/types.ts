@@ -8,7 +8,33 @@ export type Scalars = {
   Float: number,
 };
 
+export type Mutation = {
+   __typename?: 'Mutation',
+  register: User,
+};
+
+
+export type MutationRegisterArgs = {
+  payload: RegisterInput
+};
+
 export type Query = {
    __typename?: 'Query',
   ping: Scalars['String'],
+};
+
+export type RegisterInput = {
+  username: Scalars['String'],
+  phoneNumber: Scalars['String'],
+  password: Scalars['String'],
+};
+
+export type User = {
+   __typename?: 'User',
+  id: Scalars['ID'],
+  username: Scalars['String'],
+  phoneNumber: Scalars['String'],
+  /** Only register, login, and me will return access token */
+  token?: Maybe<Scalars['String']>,
+  createdAt: Scalars['Int'],
 };
