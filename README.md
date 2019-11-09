@@ -41,3 +41,16 @@
    ```bash
    yarn start
    ```
+
+## Resources
+
+- app
+
+  - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+  - [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+  - [React Apollo](https://www.apollographql.com/docs/react/data/queries/)
+
+- server
+
+  - [Type GraphQL](https://typegraphql.ml/docs/getting-started.html)
+  - [TypeORM](https://typeorm.io/#/)
