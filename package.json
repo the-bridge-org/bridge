@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "lerna run start --stream --parallel",
-    "develop": "lerna run start --stream --parallel"
+    "start": "lerna run --parallel start",
+    "develop": "lerna run --parallel start"
   },
   "devDependencies": {
     "lerna": "^3.18.3"
