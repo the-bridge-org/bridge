@@ -42,6 +42,11 @@
    yarn start
    ```
 
+3. View in browser
+
+   - Front End: [http://localhost:3000](http://localhost:3000)
+   - Back End: [http://localhost:4000](http://localhost:4000)
+
 ## Resources
 
 - app
@@ -54,3 +59,7 @@
 
   - [Type GraphQL](https://typegraphql.ml/docs/getting-started.html)
   - [TypeORM](https://typeorm.io/#/)
+
+## Wiki Page
+
+[Bridge Wiki](https://www.notion.so/thebridgeorg/Wiki-3d64fe29697d44b9a4d77be3ce36bb9f)
