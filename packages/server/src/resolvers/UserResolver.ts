@@ -22,7 +22,7 @@ export class UserResolver {
     { username, phoneNumber, password }: RegisterInput,
     @Ctx() { res }: IContext
   ) {
-    const userExists = await User.find({
+    const userExists = await User.findOne({
       where: [{ username }, { phoneNumber }],
     });
 
