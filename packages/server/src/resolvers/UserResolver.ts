@@ -2,6 +2,7 @@ import * as bcrypt from "bcryptjs";
 import { Response } from "express";
 import { GraphQLError } from "graphql";
 import { Arg, Ctx, Mutation, Resolver } from "type-graphql";
+import { LoginInput } from "../inputs/user/LoginInput";
 import { RegisterInput } from "../inputs/user/RegisterInput";
 import { User } from "../models/User";
 import { IContext } from "../services/middlewares";
@@ -37,6 +38,27 @@ export class UserResolver {
     user.password = bcrypt.hashSync(password);
 
     await user.save();
+
+    user.token = signAccessToken(user);
+    this.setCookie(res, signRefreshToken(user));
+
+    return user;
+  }
+
+  @Mutation(() => User)
+  public async login(
+    @Arg("payload") { username, password }: LoginInput,
+    @Ctx() { res }: IContext
+  ) {
+    const user = await User.findOne({ where: { username } });
+
+    if (!user) {
+      throw new GraphQLError("User does not exist");
+    }
+
+    if (!bcrypt.compareSync(password, user.password)) {
+      throw new GraphQLError("Credentials does not match");
+    }
 
     user.token = signAccessToken(user);
     this.setCookie(res, signRefreshToken(user));
