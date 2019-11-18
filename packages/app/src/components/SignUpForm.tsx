@@ -32,10 +32,12 @@ const centered = {
   alignItems: "center",
 };
 
-export const LoginForm: React.FC = () => {
+export const SignUpForm: React.FC = () => {
   const [fields, setFields] = useState({
+    username: "",
     phoneNumber: "",
     password: "",
+    confirmPassword: "",
   });
 
   const updateField = (
@@ -47,17 +49,28 @@ export const LoginForm: React.FC = () => {
       return { ...prevState, [data.name]: val };
     });
   };
+
   return (
     <div style={formStyle}>
       <div style={centered}>
         <h1 style={h1Style}>Bridge</h1>
       </div>
       <div style={centered}>
-        <h3 style={h2Style}>Sign in</h3>
+        <h3 style={h2Style}>Sign up</h3>
       </div>
 
       <Segment raised padded>
         <Form size="large">
+          <Form.Field value={fields.username} className="username">
+            <label>Username</label>
+            <Input
+              name="username"
+              icon="user"
+              iconPosition="left"
+              placeholder="username"
+              onChange={updateField}
+            />
+          </Form.Field>
           <Form.Field value={fields.phoneNumber} className="phoneNumber">
             <label>Phone Number</label>
             <Input
@@ -76,8 +89,23 @@ export const LoginForm: React.FC = () => {
               icon="keyboard outline"
               iconPosition="left"
               placeholder="Password"
-              name="password"
               type="password"
+              name="password"
+              onChange={updateField}
+            />
+          </Form.Field>
+
+          <Form.Field
+            value={fields.confirmPassword}
+            className="confirmPassword"
+          >
+            <label>Confirm Password</label>
+            <Input
+              icon="keyboard outline"
+              iconPosition="left"
+              placeholder="Confirm Password"
+              type="password"
+              name="confirmPassword"
               onChange={updateField}
             />
           </Form.Field>
@@ -88,7 +116,7 @@ export const LoginForm: React.FC = () => {
               label={{
                 basic: true,
                 color: "red",
-                content: "Sign in",
+                content: "Sign up",
               }}
             />
           </div>
