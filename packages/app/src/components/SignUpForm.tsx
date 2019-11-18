@@ -71,7 +71,7 @@ export const SignUpForm: React.FC = () => {
               onChange={updateField}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field value={fields.phoneNumber} className="phoneNumber">
             <label>Phone Number</label>
             <Input
               icon="phone"
@@ -83,7 +83,7 @@ export const SignUpForm: React.FC = () => {
               onChange={updateField}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field value={fields.password} className="password">
             <label>Password</label>
             <Input
               icon="keyboard outline"
@@ -95,7 +95,10 @@ export const SignUpForm: React.FC = () => {
             />
           </Form.Field>
 
-          <Form.Field>
+          <Form.Field
+            value={fields.confirmPassword}
+            className="confirmPassword"
+          >
             <label>Confirm Password</label>
             <Input
               icon="keyboard outline"

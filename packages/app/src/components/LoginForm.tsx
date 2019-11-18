@@ -1,5 +1,11 @@
-import React from "react";
-import { Button, Form, Segment, Input } from "semantic-ui-react";
+import React, { useState } from "react";
+import {
+  Button,
+  Form,
+  Segment,
+  Input,
+  InputOnChangeData,
+} from "semantic-ui-react";
 
 const h1Style = {
   fontFamily: "Permanent Marker",
@@ -27,6 +33,20 @@ const centered = {
 };
 
 export const LoginForm: React.FC = () => {
+  const [fields, setFields] = useState({
+    phoneNumber: "",
+    password: "",
+  });
+
+  const updateField = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData
+  ) => {
+    const val = e.target.value;
+    setFields(prevState => {
+      return { ...prevState, [data.name]: val };
+    });
+  };
   return (
     <div style={formStyle}>
       <div style={centered}>
@@ -38,24 +58,27 @@ export const LoginForm: React.FC = () => {
 
       <Segment raised padded>
         <Form size="large">
-          <Form.Field>
+          <Form.Field value={fields.phoneNumber} className="phoneNumber">
             <label>Phone Number</label>
             <Input
               icon="phone"
               iconPosition="left"
               type="tel"
-              name="phone"
+              name="phoneNumber"
               pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
               placeholder="xxxxxxxxxx"
+              onChange={updateField}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field value={fields.password} className="password">
             <label>Password</label>
             <Input
               icon="keyboard outline"
               iconPosition="left"
               placeholder="Password"
+              name="password"
               type="password"
+              onChange={updateField}
             />
           </Form.Field>
           <div style={centered}>
